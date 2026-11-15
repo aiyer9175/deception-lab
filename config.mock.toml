@@ -1,0 +1,27 @@
+# Pipeline test with simulated senders. No API calls, no keys, and the output is NOT real data.
+# Two fake "models" with different preferences so the report has something to compare.
+
+[experiment]
+trials = 50
+temperature = 1.0
+grids = ["grid1", "grid2", "grid3"]
+arms = ["deception", "dictator"]
+framings = ["neutral"]
+seed = 0
+concurrency = 32
+
+[[models]]
+name = "mock-honest"
+provider = "mock"
+model = "simulated"
+mock_alpha = 0.6      # weight on receiver's loss
+mock_lie_cost = 3.0   # cost of lying itself
+mock_noise = 2.0
+
+[[models]]
+name = "mock-selfish"
+provider = "mock"
+model = "simulated"
+mock_alpha = 0.1
+mock_lie_cost = 0.5
+mock_noise = 2.0

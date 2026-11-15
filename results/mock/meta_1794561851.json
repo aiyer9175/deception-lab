@@ -1,0 +1,65 @@
+{
+  "started_utc": "2026-11-13T09:24:11.907477+00:00",
+  "config": {
+    "experiment": {
+      "trials": 50,
+      "temperature": 1.0,
+      "grids": [
+        "grid1",
+        "grid2",
+        "grid3"
+      ],
+      "arms": [
+        "deception",
+        "dictator"
+      ],
+      "framings": [
+        "neutral"
+      ],
+      "seed": 0,
+      "concurrency": 32,
+      "max_tokens": 300,
+      "counterbalance": true,
+      "wordings": [
+        "original"
+      ]
+    },
+    "models": [
+      {
+        "name": "mock-honest",
+        "provider": "mock",
+        "model": "simulated",
+        "mock_alpha": 0.6,
+        "mock_lie_cost": 3.0,
+        "mock_noise": 2.0
+      },
+      {
+        "name": "mock-selfish",
+        "provider": "mock",
+        "model": "simulated",
+        "mock_alpha": 0.1,
+        "mock_lie_cost": 0.5,
+        "mock_noise": 2.0
+      }
+    ]
+  },
+  "models": [
+    {
+      "name": "mock-honest",
+      "provider": "mock",
+      "model": "simulated",
+      "mock_alpha": 0.6,
+      "mock_lie_cost": 3.0,
+      "mock_noise": 2.0
+    },
+    {
+      "name": "mock-selfish",
+      "provider": "mock",
+      "model": "simulated",
+      "mock_alpha": 0.1,
+      "mock_lie_cost": 0.5,
+      "mock_noise": 2.0
+    }
+  ],
+  "n_new_trials": 3200
+}

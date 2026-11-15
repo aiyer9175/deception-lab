@@ -1,0 +1,47 @@
+# Copy to config.toml and fill in model IDs. Keys are read from environment variables, never from this file.
+# Check each provider's docs for current model IDs; the ones below are placeholders.
+
+[experiment]
+trials = 50                       # trials per cell
+temperature = 1.0                 # sampling randomness; 0 makes repeated trials near-identical
+max_tokens = 300                  # raise to ~2000 for reasoning/"thinking" models: their thinking
+                                  # counts against this limit, so 300 can return an empty reply
+grids = ["grid1"]                 # grid1 = Gneezy replication; add "grid2" (gain sweep), "grid3" (harm sweep)
+arms = ["deception", "dictator"]
+framings = ["neutral", "maximize"]
+seed = 0
+concurrency = 8                   # parallel requests per model; lower it if you hit rate limits
+counterbalance = true             # randomize which option/message is the lie, to rule out position bias
+wordings = ["original"]           # add "alt1", "alt2" to test robustness to phrasing (multiplies calls)
+max_calls = 15000                 # refuse to start if the plan exceeds this (also --max-calls on the CLI)
+
+# One block per model. provider: openai | anthropic | gemini | openai_compatible
+# Optional per-model fields: temperature (number or "omit"), max_tokens, concurrency, base_url,
+# token_param ("max_tokens" or "max_completion_tokens", OpenAI-style providers only), timeout_s.
+
+[[models]]
+name = "gpt"                      # short label used in the report
+provider = "openai"
+model = "REPLACE-with-OpenAI-model-id"
+api_key_env = "OPENAI_API_KEY"
+
+[[models]]
+name = "claude"
+provider = "anthropic"
+model = "REPLACE-with-Anthropic-model-id"
+api_key_env = "ANTHROPIC_API_KEY"
+
+[[models]]
+name = "gemini"
+provider = "gemini"
+model = "REPLACE-with-Gemini-model-id"
+api_key_env = "GEMINI_API_KEY"
+
+# Open-weight models through any OpenAI-compatible host (OpenRouter shown), or a local Ollama server:
+#   base_url = "http://localhost:11434/v1"   (no api_key_env needed)
+[[models]]
+name = "llama"
+provider = "openai_compatible"
+base_url = "https://openrouter.ai/api/v1"
+model = "REPLACE-with-open-weight-model-id"
+api_key_env = "OPENROUTER_API_KEY"

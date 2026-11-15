@@ -1,0 +1,81 @@
+{
+  "started_utc": "2026-11-14T23:58:45.122710+00:00",
+  "config": {
+    "experiment": {
+      "trials": 50,
+      "temperature": 1.0,
+      "max_tokens": 300,
+      "grids": [
+        "grid1",
+        "grid2",
+        "grid3"
+      ],
+      "arms": [
+        "deception",
+        "dictator"
+      ],
+      "framings": [
+        "neutral",
+        "maximize"
+      ],
+      "wordings": [
+        "original"
+      ],
+      "seed": 0,
+      "concurrency": 8,
+      "counterbalance": true,
+      "max_calls": 10000
+    },
+    "models": [
+      {
+        "name": "gpt-4o",
+        "provider": "openai",
+        "model": "gpt-4o-2024-11-20",
+        "api_key_env": "OPENAI_API_KEY"
+      },
+      {
+        "name": "gpt-4.1",
+        "provider": "openai",
+        "model": "gpt-4.1-2025-04-14",
+        "api_key_env": "OPENAI_API_KEY"
+      },
+      {
+        "name": "gpt-5-mini",
+        "provider": "openai",
+        "model": "gpt-5-mini-2025-08-07",
+        "api_key_env": "OPENAI_API_KEY",
+        "temperature": "omit",
+        "max_tokens": 2000,
+        "extra": {
+          "reasoning_effort": "low"
+        }
+      }
+    ]
+  },
+  "models": [
+    {
+      "name": "gpt-4o",
+      "provider": "openai",
+      "model": "gpt-4o-2024-11-20",
+      "api_key_env": "OPENAI_API_KEY"
+    },
+    {
+      "name": "gpt-4.1",
+      "provider": "openai",
+      "model": "gpt-4.1-2025-04-14",
+      "api_key_env": "OPENAI_API_KEY"
+    },
+    {
+      "name": "gpt-5-mini",
+      "provider": "openai",
+      "model": "gpt-5-mini-2025-08-07",
+      "api_key_env": "OPENAI_API_KEY",
+      "temperature": "omit",
+      "max_tokens": 2000,
+      "extra": {
+        "reasoning_effort": "low"
+      }
+    }
+  ],
+  "n_new_trials": 9600
+}

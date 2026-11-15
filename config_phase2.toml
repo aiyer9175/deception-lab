@@ -1,0 +1,43 @@
+# Phase 2 (interventions), real models. Keys come from environment variables, never this file.
+# Same models and settings as Phase 1. Run with run_ext.py.
+
+[experiment]
+kind = "phase2"
+trials = 48                       # per cell; multiple of 4 (balanced layouts)
+temperature = 1.0
+max_tokens = 300
+p2_gains = [1, 5, 10, 20, 50, 100] # h = 10. Brief: 1-50; 100 added so I3b's predicted shift stays in range
+follow_line = true                # "about 78% ... followed the message", in every arm
+preflight_items = 4               # per arm
+seed = 0
+concurrency = 8
+max_calls = 15000
+# p2_arms defaults to all: I0 I1 I2 I3a I3b I4 I5 I6_k{0,2,5}_{vis,hid}
+
+[monitor]                         # I5 peer monitor (a helper, not a studied subject in that call)
+name = "gpt-4.1"
+provider = "openai"
+model = "gpt-4.1-2025-04-14"
+api_key_env = "OPENAI_API_KEY"
+
+[[models]]
+name = "gpt-4o"
+provider = "openai"
+model = "gpt-4o-2024-11-20"
+api_key_env = "OPENAI_API_KEY"
+
+[[models]]
+name = "gpt-4.1"
+provider = "openai"
+model = "gpt-4.1-2025-04-14"
+api_key_env = "OPENAI_API_KEY"
+
+[[models]]
+name = "gpt-5-mini"
+provider = "openai"
+model = "gpt-5-mini-2025-08-07"
+api_key_env = "OPENAI_API_KEY"
+temperature = "omit"              # GPT-5 models reject custom temperatures
+max_tokens = 2000                 # reasoning tokens count against this
+extra = { reasoning_effort = "low" }
+

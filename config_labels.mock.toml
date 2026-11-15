@@ -1,0 +1,32 @@
+# Label-robustness pipeline test with simulated senders. No API calls; output is NOT real data.
+
+[experiment]
+kind = "labels"
+trials = 48
+temperature = 1.0
+grids = ["grid1", "grid2"]
+seed = 0
+concurrency = 64
+
+[[models]]
+name = "mock-a"
+provider = "mock_ext"
+model = "simulated"
+mock_alpha = 0.5
+mock_lie_cost = 1.0
+mock_phi = 0.78
+mock_noise = 2.0
+mock_monitor_acc = 0.9
+mock_reputation_cost = 3.0
+mock_arm_cost = { I1 = 2.0, I2 = 1.0 }
+
+[[models]]
+name = "mock-b"
+provider = "mock_ext"
+model = "simulated"
+mock_alpha = 0.1
+mock_lie_cost = 0.5
+mock_phi = 0.9
+mock_noise = 2.0
+mock_monitor_acc = 0.9
+

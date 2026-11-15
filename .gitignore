@@ -1,0 +1,9 @@
+.venv/
+config.toml
+results/*
+!results/mock/
+!results/phase1/
+__pycache__/
+*.log
+.pytest_cache/
+.DS_Store

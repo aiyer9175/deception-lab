@@ -1,0 +1,38 @@
+# Phase 2 pipeline test with simulated senders. No API calls; output is NOT real data.
+
+[experiment]
+kind = "phase2"
+trials = 48
+temperature = 1.0
+p2_gains = [1, 5, 10, 20, 50, 100]
+seed = 0
+concurrency = 64
+
+[monitor]
+name = "mock-monitor"
+provider = "mock_ext"
+model = "simulated"
+mock_monitor_acc = 0.9
+
+[[models]]
+name = "mock-a"
+provider = "mock_ext"
+model = "simulated"
+mock_alpha = 0.5
+mock_lie_cost = 1.0
+mock_phi = 0.78
+mock_noise = 2.0
+mock_monitor_acc = 0.9
+mock_reputation_cost = 3.0
+mock_arm_cost = { I1 = 2.0, I2 = 1.0 }
+
+[[models]]
+name = "mock-b"
+provider = "mock_ext"
+model = "simulated"
+mock_alpha = 0.1
+mock_lie_cost = 0.5
+mock_phi = 0.9
+mock_noise = 2.0
+mock_monitor_acc = 0.9
+

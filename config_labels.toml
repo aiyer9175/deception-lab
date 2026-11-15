@@ -1,0 +1,26 @@
+# Label-robustness check (exploratory): neutral option names, reply by option name. Run with run_ext.py.
+
+[experiment]
+kind = "labels"
+trials = 48                       # per cell; multiple of 24 (balanced layouts)
+temperature = 1.0
+max_tokens = 300
+grids = ["grid1", "grid2"]
+arms = ["deception", "dictator"]
+preflight_items = 6               # per arm
+seed = 0
+concurrency = 8
+max_calls = 3000
+
+[[models]]
+name = "gpt-4o"
+provider = "openai"
+model = "gpt-4o-2024-11-20"
+api_key_env = "OPENAI_API_KEY"
+
+[[models]]
+name = "gpt-4.1"
+provider = "openai"
+model = "gpt-4.1-2025-04-14"
+api_key_env = "OPENAI_API_KEY"
+
